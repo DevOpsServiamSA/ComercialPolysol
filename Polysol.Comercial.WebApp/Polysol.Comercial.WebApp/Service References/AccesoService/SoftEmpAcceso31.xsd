@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.10.16/ServicioWeb/SoftEmpAcceso.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Filasur.AppCorp.Entities" />
+  <xs:element name="ObtenerCredencial">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="p_Usuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_UsaERP" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCredencialResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Filasur.AppCorp.Entities" minOccurs="0" name="ObtenerCredencialResult" nillable="true" type="q1:Credencial" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaAcceso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="p_Usuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_Clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_UsaERP" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaAccesoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Filasur.AppCorp.Entities" minOccurs="0" name="ValidaAccesoResult" nillable="true" type="q2:Credencial" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerNodos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="p_CodApp" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_Usuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerNodosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Filasur.AppCorp.Entities" minOccurs="0" name="ObtenerNodosResult" nillable="true" type="q3:ArrayOfNodo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerRol">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="p_CodApp" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_Usuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerRolResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Filasur.AppCorp.Entities" minOccurs="0" name="ObtenerRolResult" nillable="true" type="q4:Rol" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiarPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="p_CredencialId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_ClaveAnterior" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_ClaveNueva" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiarPasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CambiarPasswordResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

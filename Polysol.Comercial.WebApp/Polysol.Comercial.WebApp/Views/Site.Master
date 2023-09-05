@@ -1,0 +1,126 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Polysol.Comercial.WebApp.Views.Site" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+
+    <asp:ContentPlaceHolder ID="cph_head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="icon" sizes="192x192" href="/icon.png" />
+    <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <title>COMERCIAL POLYSOL</title>
+
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="../Content/Site.css" rel="stylesheet" />
+    <link href="../Content/animate.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-toggle.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts>
+                <asp:ScriptReference Path="~/Scripts/jquery-3.1.1.min.js" />
+                <asp:ScriptReference Path="~/Scripts/bootstrap.min.js" />
+                <asp:ScriptReference Path="~/Scripts/bootstrap_notify/bootstrap-notify.js" />
+                <asp:ScriptReference Path="~/Scripts/ControlProcesos.js" />
+                <asp:ScriptReference Path="~/Scripts/respond.js" />
+                <asp:ScriptReference Path="~/Scripts/Chart.js" />
+                <asp:ScriptReference Path="~/Scripts/bootstrap-toggle.min.js" />
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server">
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/cash.png" Style="display: inline-block; height: 30px; margin-top: -5px" />
+                        COMERCIAL POLYSOL
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <%--<li>--%>
+                        <%--<asp:LinkButton ID="btnEnvasadora" CssClass="btn" runat="server" OnClick="btnEnvasadora_Click" Text="" Font-Bold="true" ToolTip="SELECCIONAR OTRA ENVASADORA">
+                            </asp:LinkButton>--%>
+                        <%--</li>--%>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle btn" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <b><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    <asp:Literal ID="ltrUsuario" runat="server"></asp:Literal>
+                                    <span class="caret"></span></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <asp:LinkButton class="dropdown-item" ID="btnCambiarClave" runat="server" OnClick="btnCambiarClave_Click"><b>Cambiar Contraseña</b></asp:LinkButton></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="btnCerrarSesion" CssClass="btn" runat="server" OnClick="btnCerrarSesion_Click">
+                                <b><i class="fa fa-sign-out" aria-hidden="true"></i> CERRAR SESIÓN</b>
+                            </asp:LinkButton>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="margin-top: 0px; padding-right: 0px; padding-left: 0px; margin-bottom: 0px">
+            <asp:ContentPlaceHolder ID="cph_content" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <%--INICIO :: VENTANAS EMERGENTES--%>
+
+        <div class="modal fade" id="myModalContra" tabindex="-1" role="dialog" aria-labelledby="myModalLabelContra" data-backdrop="static" aria-hidden="true">
+            <div class="modal-dialog">
+                <asp:UpdatePanel ID="upModal" runat="server">
+                    <ContentTemplate>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--%>
+                                <h4 class="modal-title">Cambio de contraseña</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form">
+                                    <div class="form-group">
+                                        <label for="ddlLinea">Contraseña actual</label>
+                                        <asp:TextBox ID="txtClaveActual" runat="server" CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtOrdenFR">Contraseña nueva</label>
+                                        <asp:TextBox ID="txtClaveNueva" runat="server" CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cerrar</button>
+                                <asp:Button ID="btnGuardarClave" Text="Guardar" runat="server" CssClass="btn btn-sm btn-info" OnClick="btnGuardarClave_Click" />
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </div>
+
+        <%--FIN :: VENTANAS EMERGENTES--%>
+    </form>
+</body>
+</html>
